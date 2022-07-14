@@ -1,11 +1,24 @@
 import { InputShow } from './../types';
 import { Request, Response } from 'express';
 import { ShowBusiness } from './../business/ShowBusiness';
+import { BandBusiness } from '../business/BandBusiness';
 
 export class Controller {
     constructor(
         private showBusiness: ShowBusiness
     ) { }
+    async getBand(req: Request, res: Response) {
+        try {
+            const data = {id: req.body.id, name: req.body.name}
+            
+            const bandBusiness = new BandBusiness()
+            const result = await bandBusiness.getBand(data)
+
+            res.status(200).send(result)
+        } catch (error:any) {
+            res.status(400).send({error: error.message})
+        }
+    }
 
     signUp = async (req: Request, res: Response) => {
         const {band_id, week_day, start_time, end_time} = req.body;
