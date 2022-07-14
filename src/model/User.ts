@@ -1,38 +1,37 @@
-import { CustomError } from "../error/CustomError";
+import { CustomError } from "../error/CustomError"
 
 export enum ROLE {
-  NORMAL = "NORMAL",
-  ADMIN = "ADMIN",
+    NORMAL = "NORMAL",
+    ADMIN = "ADMIN"
 }
 
 export class User {
-  constructor(
-    private id: string,
-    private name: string,
-    private email: string,
-    private password: string,
-    private role: ROLE
-  ) {}
+    constructor(
+        private id:string,
+        private name:string,
+        private email:string,
+        private password:string,
+        private role:ROLE
+    ) {}
 
-  getId = (): string => {
-    return this.id;
-  };
-  getName = (): string => {
-    return this.name;
-  };
-  getEmail = (): string => {
-    return this.email;
-  };
-  getPassword = (): string => {
-    return this.password;
-  };
-  getRole = (): ROLE => {
-    return this.role;
-  };
-
-  static toUserModel(data: any): User {
-    return new User(data.id, data.name, data.email, data.password, data.role);
-  }
+    getId = ():string => {
+        return this.id
+    }
+    getName = ():string => {
+        return this.name
+    }
+    getEmail = ():string => {
+        return this.email
+    }
+    getPassword = ():string => {
+        return this.password
+    }
+    getRole = ():ROLE => {
+        return this.role
+    }
+    static toUserModel(data: any): User {
+        return new User(data.id, data.name, data.email, data.password, data.role);
+      }
 }
 export const stringToUserRole = (input: string): ROLE => {
   switch (input) {

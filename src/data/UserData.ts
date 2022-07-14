@@ -21,20 +21,20 @@ export class UserData extends BaseData{
             
         }
     }
-  
+
+
     public async findUserByEmail(email:string) : Promise<User | undefined>{
 
         try {
            const user = await BaseData.connection(this.tableName).select("*")
             .where({email: email})
             return user[0] && User.toUserModel(user[0])
-            
         }   
         catch (error:any) {
             console.log(error)
             throw new CustomError(400, error.sqlMessage);
-            
+
         }
     }
 
-}
+} 

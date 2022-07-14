@@ -29,7 +29,6 @@ export class UserBusiness {
       if (!email.includes("@") || !email.includes(".com")) {
         throw new CustomError(422, "Invalid email");
       }
-      
       const user = await this.userData.findUserByEmail(email);
 
       if (user) {

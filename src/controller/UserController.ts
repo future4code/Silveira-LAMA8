@@ -3,7 +3,6 @@ import { UserBusiness } from "../business/UserBusiness";
 
 export class Usercontroller {
   constructor(private userBusiness: UserBusiness) {}
- 
   signup = async (req: Request, res: Response) => {
     try {
       const { name, email, password, role} = req.body;
@@ -13,7 +12,6 @@ export class Usercontroller {
             password,
             role
           );
-    
           res.status(201).send({ result });
         } catch (error: any) {
           const { statusCode, message } = error;
