@@ -1,4 +1,7 @@
 import bcrypt from "bcryptjs";
+import dotenv from "dotenv";
+
+dotenv.config()
 
 export class HashGenerator {
    public hash = async (s: string): Promise<any> => {
