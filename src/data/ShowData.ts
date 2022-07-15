@@ -35,6 +35,18 @@ export class ShowData extends BaseData{
         }
     }
 
+    getShowById = async(id:string):Promise<Show> => {
+        try {
+            const [show]:Show[] = await ShowData
+            .connection(table_name)
+            .select(`*`)
+            .where({id});
+            return show;
+        } catch (error:any) {
+            throw new CustomError(400, error.sqlMessage)
+        }
+    }
+
     verify = async(data:InputVerify) => {
         try {
             const shows:Show[] = await ShowData
