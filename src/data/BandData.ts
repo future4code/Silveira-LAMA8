@@ -3,7 +3,7 @@ import { Band } from './../model/Band';
 import { BaseData } from "./BaseData"
 
 export class BandData extends BaseData{
-    getBandById = async(id:string):Promise<Band | undefined> => {
+    public getBandById = async(id:string):Promise<Band | undefined> => {
         try {
             const [band]:Band[] = await BandData
             .connection(`NOME_TABELA_BANDAS`)
@@ -38,6 +38,17 @@ export class BandData extends BaseData{
                 .select("*")
                 .where({ name })
             return result[0]
+        } catch (error:any) {
+            throw new CustomError(400, error.sqlMessage);
+        }
+    }
+
+    public async getBands () {
+        try {
+            const results = await BandData 
+                .connection(`NOME_TABELA_BANDAS`)
+                .select("*")
+            return results;
         } catch (error:any) {
             throw new CustomError(400, error.sqlMessage);
         }
