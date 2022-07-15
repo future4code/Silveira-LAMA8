@@ -11,6 +11,8 @@ import { IdGenerator } from "./services/idGenerator";
 import { TokenGenerator } from "./services/tokenGenerator";
 import { ShowData } from './data/ShowData';
 import { BandData } from './data/BandData';
+import { PhotoBusiness } from './business/PhotoBusiness';
+import { PhotoController } from './controller/PhotoController';
 //USER
 const userBusiness = new UserBusiness(
     new HashGenerator(),
@@ -39,3 +41,8 @@ const showController = new ShowController(
 )
 app.post("/show", showController.signUp);
 app.get("/show", showController.getShowsFromTheDay);
+
+//Photo
+const photoBusiness = new PhotoBusiness()
+const photoController = new PhotoController(photoBusiness)
+app.get("/photos/:id", photoController.getPhotos)
