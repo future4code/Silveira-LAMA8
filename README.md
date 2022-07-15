@@ -1,5 +1,5 @@
 # Labenu Music Awards
-## [POSTMAN] (https://documenter.getpostman.com/view/20352445/UzQvrQ9H)
+[POSTMAN] (https://documenter.getpostman.com/view/20352445/UzQvrQ9H)
 A API representa o sistema de gerenciamento do **LAMA**, *Labenu Musical Awards*, um festival com várias bandas famosas para formaturas! 
 
 O festival terá duração fixa de 3 dias (sexta, sábado e domingo), começando sempre as 08h e acabando as 23h, totalizando 15h de show a cada dia. As funcionalidades do sistema estão descritas a seguir:
