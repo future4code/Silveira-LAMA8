@@ -2,4 +2,11 @@
 package-lock.json
 build
 node_modules
+<<<<<<< HEAD
 request.rest
+=======
+build
+.env
+request.rest
+package-lock.json
+>>>>>>> main

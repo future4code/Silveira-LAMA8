@@ -1,6 +1,6 @@
 import { PhotoData } from "../data/PhotoData";
 import { CustomError } from "../error/CustomError";
-import { Photo, PhotoInputDTO } from "../model/Photo";
+import { Photo, PhotoInputDTO } from "./../model/Photo";
 import { HashGenerator } from "../services/hashGenerator";
 import { IdGenerator } from "../services/idGenerator";
 import { TokenGenerator } from "../services/tokenGenerator";

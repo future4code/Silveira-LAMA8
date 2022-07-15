@@ -1,4 +1,4 @@
-import { Photo } from "../model/Photo";
+import { Photo } from "./../model/Photo";
 import { BaseData } from "./BaseData";
 
 export class PhotoData extends BaseData{
