@@ -10,3 +10,17 @@ export type InputVerify = {
     start_time:number,
     end_time:number
 }
+
+export type InputTicket = {
+    token:string,
+    name:string,
+    value:number,
+    show_id:string,
+    quantity:number
+}
+
+export type InputUserTicket = {
+    token:string,
+    show_id:string,
+    quantity:number
+}

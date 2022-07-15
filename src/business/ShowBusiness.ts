@@ -19,8 +19,8 @@ export class ShowBusiness {
             throw new CustomError(422, `Invalid fields!`)
         };
 
-        if (isNaN(start_time) || !Number.isInteger(start_time) || isNaN(end_time) || !Number.isInteger(end_time) || start_time<0 || end_time<0 || start_time>24 || end_time>24) {
-            throw new CustomError(401, `Start_time and end_time have to be an integer number, representing the hours of the day!`)
+        if (isNaN(start_time) || !Number.isInteger(start_time) || isNaN(end_time) || !Number.isInteger(end_time) || start_time<8 || end_time<8 || start_time>23 || end_time>23) {
+            throw new CustomError(401, `Start_time and end_time have to be an integer number between 8 and 23!`)
         };
 
         if (week_day.toLowerCase() !== "friday" && week_day.toLowerCase() !== "saturday" && week_day.toLowerCase() !== "sunday") {

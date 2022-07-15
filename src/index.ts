@@ -1,3 +1,5 @@
+import { TicketController } from './controller/TicketController';
+import { TicketBusiness } from './business/TicketBusiness';
 import { ShowController } from './controller/ShowController';
 import { ShowBusiness } from './business/ShowBusiness';
 import { BandBusiness } from "./business/BandBusiness";
@@ -11,6 +13,7 @@ import { IdGenerator } from "./services/idGenerator";
 import { TokenGenerator } from "./services/tokenGenerator";
 import { ShowData } from './data/ShowData';
 import { BandData } from './data/BandData';
+import { TicketData } from './data/TicketData';
 //USER
 const userBusiness = new UserBusiness(
     new HashGenerator(),
@@ -39,3 +42,14 @@ const showController = new ShowController(
 )
 app.post("/show", showController.signUp);
 app.get("/show", showController.getShowsFromTheDay);
+
+//TICKET
+const ticketBusiness = new TicketBusiness(
+    new TicketData(),
+    new ShowData()
+);
+const ticketController = new TicketController(
+    ticketBusiness
+)
+app.post("/ticket", ticketController.createTicket);
+app.post("/purchase", ticketController.purchase);
