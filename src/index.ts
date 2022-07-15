@@ -1,6 +1,9 @@
+import { PhotoBusiness } from "./business/PhotoBusiness";
 import { UserBusiness } from "./business/UserBusiness";
 import { app } from "./controller/app";
+import { PhotoController } from "./controller/PhotoController";
 import { Usercontroller } from "./controller/UserController";
+import { PhotoData } from "./data/PhotoData";
 import { UserData } from "./data/UserData";
 import { HashGenerator } from "./services/hashGenerator";
 import { IdGenerator } from "./services/idGenerator";
@@ -15,3 +18,13 @@ const userBusiness = new UserBusiness(
 const userController = new Usercontroller(userBusiness)
 app.post("/user/signup", userController.signup)
 app.post("/user/login", userController.login)
+
+const photoBusiness = new PhotoBusiness(
+    new HashGenerator(),
+    new IdGenerator(),
+    new TokenGenerator(),
+    new PhotoData()
+    )
+const photoController = new PhotoController(photoBusiness)
+
+app.post("/photo", photoController.photo)

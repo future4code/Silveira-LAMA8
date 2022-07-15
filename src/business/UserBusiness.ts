@@ -18,7 +18,7 @@ export class UserBusiness {
     password: string,
     role: string
   ) {
-    console.log("entrei aqui no business")
+
     try {
       if (!name || !email || !password || !role) {
         throw new CustomError(422, "Missing input");

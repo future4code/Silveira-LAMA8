@@ -3,17 +3,28 @@ Content-Type: application/json
 
 {
     "name":"Erica",
-    "email": "eduarda9@gmail.com",
+    "email": "erica@gmail.com",
     "password": "123456",
     "role": "ADMIN"
 }
 ### 
 
-# @name login
+
 POST http://localhost:3003/user/login
 Content-Type: application/json
 
 {
-  "email": "eduarda9@gmail.com",
+   "email": "erica@gmail.com",
   "password": "123456"
+}
+
+###
+
+POST http://localhost:3003/photo
+Content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYTZiZGFkLTc0MmItNDRjZi05OGUxLTc3NzMxYzY1YTExNCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NzkxMTM3NywiZXhwIjoxNjU3OTE4NTc3fQ.F-48UvhBujxZIOhHiKP6lrBOLYg1sWl4itHLTUZMRFo
+
+{
+    "photo":"https://s2.glbimg.com/2O-SM4AONhYzNkbD6TGVacji-dY=/e.glbimg.com/og/ed/f/original/2020/03/27/show-evento.jpgj",
+    "event_id":"a374389e-4586-47dc-9949-d2945056e85c"        
 }
