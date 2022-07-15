@@ -27,7 +27,7 @@ export class BandData extends BaseData{
                     id, name, music_genre, responsible
                 })
         } catch (error:any) {
-            throw new Error(error.sqlMessage || error.message)
+            throw new CustomError(400, error.sqlMessage);
         }
     }
 
@@ -39,7 +39,7 @@ export class BandData extends BaseData{
                 .where({ name })
             return result[0]
         } catch (error:any) {
-            throw new Error(error.sqlMessage || error.message)
+            throw new CustomError(400, error.sqlMessage);
         }
     }
 }
