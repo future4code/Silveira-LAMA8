@@ -56,11 +56,14 @@ export class TicketBusiness {
             const user_id = tokenData.id;
 
             if (!show_id || !quantity) { throw new CustomError(422, `Invalid fields`) };
-            const showExists = await this.showData.getShowById(show_id);
-            if(!showExists) {
-                throw new CustomError(404, `Show was not found!`)
+            const ticketExists = await this.ticketData.get(show_id);
+            if(!ticketExists) {
+                throw new CustomError(404, `Tickets from this show weren't found!`)
             }
-           
+            if (ticketExists<quantity) {
+                throw new CustomError (401, `You're trying to purchase more tickets than those available!`)
+            }
+            
             await this.ticketData.updateQuantity(show_id, quantity);
 
             const newPurchase = new UserTicket(
