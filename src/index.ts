@@ -1,18 +1,13 @@
-<<<<<<< HEAD
 import { PhotoBusiness } from "./business/PhotoBusiness";
 import { UserBusiness } from "./business/UserBusiness";
 import { app } from "./controller/app";
 import { PhotoController } from "./controller/PhotoController";
-=======
 import { TicketController } from './controller/TicketController';
 import { TicketBusiness } from './business/TicketBusiness';
 import { ShowController } from './controller/ShowController';
 import { ShowBusiness } from './business/ShowBusiness';
 import { BandBusiness } from "./business/BandBusiness";
-import { UserBusiness } from "./business/UserBusiness";
-import { app } from "./controller/app";
 import { BandController } from "./controller/BandController";
->>>>>>> main
 import { Usercontroller } from "./controller/UserController";
 import { PhotoData } from "./data/PhotoData";
 import { UserData } from "./data/UserData";
@@ -33,17 +28,16 @@ const userController = new Usercontroller(userBusiness)
 app.post("/user/signup", userController.signup)
 app.post("/user/login", userController.login)
 
-<<<<<<< HEAD
 const photoBusiness = new PhotoBusiness(
     new HashGenerator(),
     new IdGenerator(),
     new TokenGenerator(),
-    new PhotoData()
+    new PhotoData(),
+    new TicketData()
     )
 const photoController = new PhotoController(photoBusiness)
 
 app.post("/photo", photoController.photo)
-=======
 //BAND
 const bandBusiness = new BandBusiness()
 const bandController = new BandController(bandBusiness)
@@ -72,4 +66,3 @@ const ticketController = new TicketController(
 )
 app.post("/ticket", ticketController.createTicket);
 app.post("/purchase", ticketController.purchase);
->>>>>>> main

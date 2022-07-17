@@ -1,3 +1,4 @@
+import { TicketData } from './../data/TicketData';
 import { PhotoData } from "../data/PhotoData";
 import { CustomError } from "../error/CustomError";
 import { Photo, PhotoInputDTO } from "./../model/Photo";
@@ -10,7 +11,8 @@ export class PhotoBusiness{
         private hashGenerator: HashGenerator,
         private idGenerator: IdGenerator,
         private tokenGenerator: TokenGenerator,
-        private photoData: PhotoData
+        private photoData: PhotoData,
+        private ticketData: TicketData
       ) {}
       public async photo(input: PhotoInputDTO){
     try {
@@ -18,9 +20,13 @@ export class PhotoBusiness{
         if (!event_id) {
           throw new CustomError(422,"Invalid event_id");
         }
+        const ticketExists = await this.ticketData.get(event_id);
+        if (!ticketExists) {
+          throw new CustomError (404, `Show was not found!`)
+        }
 
         if (!photo) {
-            throw new CustomError(422,"Invalid  event_is");
+            throw new CustomError(422,"Invalid event_id");
           }
         const tokenData = this.tokenGenerator.verify(token)
         if (!tokenData) {
@@ -37,7 +43,7 @@ export class PhotoBusiness{
         event_id
       );
       await this.photoData.createPost(newPhoto);
-      return token;
+      return newPhoto;
       }catch (error:any) {
         throw new CustomError(error.statusCode, error.message);
     }

@@ -22,11 +22,11 @@ export class TicketData extends BaseData {
         }
     }
 
-    get = async (show_id:string):Promise<Ticket> => {
+    get = async (show_id:string):Promise<number> => {
         try {
             const [result] = await BaseData
                 .connection(this.tableName)
-                .select()
+                .select(`quantity`)
                 .where({show_id})
             return result;
         } catch (error: any) {
@@ -68,7 +68,7 @@ export class TicketData extends BaseData {
             
             await BaseData
             .connection(this.tableName)
-            .update({quantity: findQuantity.quantity + newValue})
+            .update({quantity: findQuantity.quantity - newValue})
             .where({show_id})
         } catch (error: any) {
             throw new CustomError(400, error.sqlMessage);

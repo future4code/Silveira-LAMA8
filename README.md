@@ -36,4 +36,8 @@ O festival terá duração fixa de 3 dias (sexta, sábado e domingo), começando
         
 - 8. Comprar ingresso
         
-     Deve receber a quantidade de ingressos e o nome. Deve retornar erros específicos para um nome inválido, ingresso não encontrado e quantidade inválida (ou seja se existem menos ingressos disponíveis do que o usuário quer comprar)
+    Recebe a quantidade de ingressos e o nome. Retorna erros específicos para um nome inválido, ingresso não encontrado e quantidade inválida (ou seja se existem menos ingressos disponíveis do que o usuário quer comprar).
+    
+- 9. Adicionar foto
+        
+   Adiciona uma foto para a galeria de um evento e são armazenadas como links no banco de dados.
